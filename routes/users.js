@@ -12,6 +12,10 @@ module.exports.show = function(req, res, next) {
   User.findOne({ email: req.oauth.bearerToken.userId}, function(err, user) {
     if (err) return next(err);
     if (!user) return next(new errors.NotFound('User not found'));
-    res.render('account', { user: user });
+    var response = {
+      username: user.firstname,
+      email: user.email
+    };
+    res.jsonp(response);
   });
 };
