@@ -2,6 +2,8 @@ var app = require('./app');
 var models = require('./models');
 
 models.User.create({
+  firstname: 'Alex',
+  lastname: 'Lancelot',
   email: 'alex@example.com',
   hashed_password: '$2a$10$aZB36UooZpL.fAgbQVN/j.pfZVVvkHxEnj7vfkVSqwBOBZbB/IAAK' //test
 }, function() {
