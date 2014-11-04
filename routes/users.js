@@ -9,7 +9,7 @@ module.exports.create = function(req, res, next) {
 };
 
 module.exports.show = function(req, res, next) {
-  User.findOne({ email: req.session.userId}, function(err, user) {
+  User.findOne({ email: req.oauth.bearerToken.userId}, function(err, user) {
     if (err) return next(err);
     if (!user) return next(new errors.NotFound('User not found'));
     res.render('account', { user: user });
