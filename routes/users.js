@@ -13,6 +13,7 @@ module.exports.show = function(req, res, next) {
     if (err) return next(err);
     if (!user) return next(new errors.NotFound('User not found'));
     var response = {
+      uuid: user._id,  
       username: user.firstname,
       email: user.email
     };
