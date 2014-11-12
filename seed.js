@@ -1,11 +1,17 @@
 var app = require('./app');
 var models = require('./models');
+var bcrypt = require('bcrypt');
+
+function hashPassword(password) {
+  var salt = bcrypt.genSaltSync(10);
+  return bcrypt.hashSync(password, salt);
+}
 
 models.User.create({
-  firstname: 'Alex',
-  lastname: 'Lancelot',
-  email: 'alex@example.com',
-  hashed_password: '$2a$10$aZB36UooZpL.fAgbQVN/j.pfZVVvkHxEnj7vfkVSqwBOBZbB/IAAK' //test
+  firstname: 'Flow',
+  lastname: 'B. Programming',
+  email: 'flowhub@example.com',
+  hashed_password: hashPassword('test')
 }, function() {
   models.OAuthClientsModel.create({
     clientId: 'papers3',
