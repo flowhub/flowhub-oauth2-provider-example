@@ -64,8 +64,9 @@ app.all('/oauth/token', app.oauth.grant());
 
 app.get('/oauth/authorise', function(req, res, next) {
   if (!req.session.userId) {
-    return res.redirect('/session?redirect=' + req.path + '&client_id=' +
-      req.query.client_id + '&redirect_uri=' + req.query.redirect_uri);
+    return res.redirect('/session?redirect=' + req.path + '&client_id=' +  
+      req.query.client_id + '&redirect_uri=' + req.query.redirect_uri +
+      '&response_type=' + req.query.response_type);
   }
 
   res.render('authorise', {
@@ -75,10 +76,11 @@ app.get('/oauth/authorise', function(req, res, next) {
 });
 
 // Handle authorise
-app.post('/oauth/authorise', function(req, res, next) {
+app.all('/oauth/authorise', function(req, res, next) {
   if (!req.session.userId) {
     return res.redirect('/session?redirect=' + req.path + 'client_id=' +
-      req.query.client_id +'&redirect_uri=' + req.query.redirect_uri);
+      req.query.client_id +'&redirect_uri=' + req.query.redirect_uri +
+       '&response_type=' + req.query.response_type); 
   }
 
   next();
