@@ -1,5 +1,7 @@
 # OAuth2 Server Example
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/flowhub/flowhub-oauth2-provider-example.svg)](https://greenkeeper.io/)
+
 This is a small example that uses
 [node-oauth2-server](https://github.com/thomseddon/node-oauth2-server/) and Mongoose.
 
